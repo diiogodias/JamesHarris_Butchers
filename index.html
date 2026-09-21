@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>James A Harris &amp; Son Quality Butchers | Smallfield, Horley</title>
+  <meta name="description" content="A traditional family butcher in Smallfield, Horley, selling quality, locally-sourced beef, pork, lamb, poultry, game, sausages and home-made pies since 1999.">
+
+  <!-- TODO: add <link rel="canonical"> and change og:url / og:image to absolute
+       https:// URLs once the live domain is confirmed. Facebook and Google
+       require absolute URLs for og:image. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="James A Harris &amp; Son Quality Butchers">
+  <meta property="og:title" content="James A Harris &amp; Son Quality Butchers | Smallfield, Horley">
+  <meta property="og:description" content="A traditional family butcher in Smallfield, Horley, selling quality, locally-sourced meat since 1999.">
+  <meta property="og:image" content="images/hero-steak.jpg">
+  <meta property="og:image:alt" content="Lamb chops on a wooden board with a butcher's cleaver, rosemary and garlic">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- Favicon placeholder. Inline SVG, so there is no request for a file that
+       does not exist yet. TODO: replace with a real favicon cut from logo2.png. -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%236B4A32'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='19' fill='%23F2F0EC'%3EH%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Marks that scripting is available before first paint, so the scroll-reveal
+       styles never hide content from visitors with JavaScript turned off. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/main.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Butcher",
+    "name": "James A Harris & Son Quality Butchers",
+    "description": "Traditional family butcher in Smallfield, Horley, selling quality, locally-sourced meat since 1999.",
+    "image": "images/hero-steak.jpg",
+    "logo": "images/logo2.png",
+    "telephone": "+441342844666",
+    "email": "harrisbutchers1@gmail.com",
+    "foundingDate": "1999",
+    "priceRange": "££",
+    "currenciesAccepted": "GBP",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1 The Parade, Redehall Road",
+      "addressLocality": "Smallfield",
+      "addressRegion": "Surrey",
+      "postalCode": "RH6 9PY",
+      "addressCountry": "GB"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "08:00",
+        "closes": "13:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "14:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "09:00",
+        "closes": "13:00"
+      }
+    ]
+  }
+  </script>
+  <!-- Monday is intentionally absent from openingHoursSpecification: the shop is
+       closed, and omitting the day is how schema.org signals that.
+       TODO: once confirmed, add "url", "sameAs" (Facebook) and "geo" coordinates. -->
+</head>
+<body>
+
+  <!-- FIXED HEADER — transparent over the hero, solid once scrolled.
+       The compact lockup on the left only appears in the scrolled state, so the
+       logo is never on screen at the same time as the hero plaque. -->
+  <header class="site-header site-header--overlay">
+    <div class="header-inner">
+      <a class="brand-compact" href="#top">
+        <img class="brand-compact-logo" src="images/logo2.png" alt="" width="881" height="688">
+        <span class="brand-compact-name">James A Harris &amp; Son</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#what-we-sell">Our Meat</a></li>
+          <li><a href="#find-us">Find Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <img class="hero-logo" src="images/logo2.png" alt="James A Harris &amp; Son Quality Butchers logo, bull's head with crossed cleavers" width="881" height="688">
+
+        <h1>James A Harris &amp; Son</h1>
+
+        <p class="hero-eyebrow"><span>Quality Butchers</span></p>
+
+        <span class="hero-divider" aria-hidden="true">
+          <svg width="62" height="9" viewBox="0 0 62 9" fill="none" focusable="false">
+            <path d="M0 4.5h22M40 4.5h22" stroke="currentColor" stroke-width="1"/>
+            <path d="M31 0l4.5 4.5L31 9l-4.5-4.5z" fill="currentColor"/>
+          </svg>
+        </span>
+
+        <p class="hero-sub">Quality, locally-sourced meat since 1999</p>
+
+        <a class="button" href="#what-we-sell">See what's on the counter</a>
+      </div>
+
+      <a class="hero-scroll" href="#what-we-sell" aria-label="Scroll to our products">
+        <svg width="24" height="14" viewBox="0 0 24 14" fill="none" aria-hidden="true" focusable="false">
+          <path d="M1.5 1.5L12 12 22.5 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- 3. WHAT WE SELL -->
+    <section class="section reveal" id="what-we-sell" aria-labelledby="what-we-sell-heading">
+      <h2 id="what-we-sell-heading">What We Sell</h2>
+      <p class="section-note">Everything cut to order by hand, over the block, just as it should be.</p>
+
+      <!-- Product photos live in images/products/. Until a file is dropped in,
+           js/main.js hides the broken image and leaves the neutral dark panel. -->
+      <div class="card-grid">
+        <article class="product-card">
+          <img src="images/products/beef.jpg" alt="Thick-cut 21-day matured British sirloin and rib steaks on a wooden butcher's block" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Beef</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>21-day matured British beef, all cuts to order.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="images/products/lamb.jpg" alt="A French-trimmed rack of free-range English lamb with loin chops alongside" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Lamb</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>Free-range, grass-fed English lamb.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="images/products/pork.jpg" alt="A rolled loin of outdoor-reared pork with scored crackling, tied ready for roasting" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Pork</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>Locally sourced, outdoor-reared.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="images/products/poultry.jpg" alt="A whole trussed free-range chicken with a duck and a goose on the counter behind" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Poultry</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>Free-range chicken, duck, goose and capon.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="images/products/sausages.jpg" alt="Coils of freshly linked handmade sausages laid out on a butcher's tray" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Sausages</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>Award-winning Gold and Silver flavours.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="images/products/pastries.jpg" alt="Golden home-made pasties and pies fresh from the oven, including the Smallfield pasty" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Pastries</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>Home-made daily, including the famous Smallfield pasty.</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="images/products/venison-game.jpg" alt="A haunch of venison with a brace of pheasant and partridge hung beside it" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Venison &amp; Game</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>Venison, pheasant, partridge and more, in season.</p>
+          </div>
+        </article>
+
+        <!-- TODO: confirm wording with client -->
+        <article class="product-card">
+          <img src="images/products/bbq.jpg" alt="A tray of barbecue cuts including marinated steaks, kebabs, burgers and spare ribs" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>BBQ</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p class="todo">[TODO: confirm wording with client]</p>
+          </div>
+        </article>
+
+        <!-- TODO: confirm wording with client -->
+        <article class="product-card">
+          <img src="images/products/offal.jpg" alt="Fresh offal on the counter including liver, kidneys and sliced black pudding" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <div class="product-card-text">
+            <h3>Offal</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p class="todo">[TODO: confirm wording with client]</p>
+          </div>
+        </article>
+
+        <!-- The only clickable card in this grid. -->
+        <a class="product-card product-card--featured" href="christmas-2026.html">
+          <img src="images/products/christmas.jpg" alt="A Christmas counter display of dressed turkey, gammon and pigs in blankets" loading="lazy">
+          <span class="product-card-note">Photo coming soon</span>
+          <span class="product-card-tag">New</span>
+          <div class="product-card-text">
+            <h3>Christmas 2026</h3>
+            <span class="product-card-rule" aria-hidden="true"></span>
+            <p>Our Christmas menu — coming soon.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 4. REVIEWS -->
+    <section class="section reveal" aria-labelledby="reviews">
+      <h2 id="reviews">Reviews</h2>
+      <p class="section-note">[TODO: replace with real customer reviews]</p>
+
+      <!-- TODO: source genuine reviews from the shop's Google Business profile or
+           Facebook page. Nothing here is a real quote — do not publish as-is. -->
+      <ul class="review-grid">
+        <li class="card review-card">
+          <p class="todo">[TODO: replace with real customer reviews]</p>
+          <p class="review-meta">[TODO: customer name and date]</p>
+        </li>
+        <li class="card review-card">
+          <p class="todo">[TODO: replace with real customer reviews]</p>
+          <p class="review-meta">[TODO: customer name and date]</p>
+        </li>
+        <li class="card review-card">
+          <p class="todo">[TODO: replace with real customer reviews]</p>
+          <p class="review-meta">[TODO: customer name and date]</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 5. OPENING HOURS -->
+    <section class="section reveal" aria-labelledby="opening-hours">
+      <h2 id="opening-hours">Opening Hours</h2>
+      <p class="section-note">Closed on Mondays. Today's opening times are highlighted below.</p>
+
+      <div class="table-wrap">
+        <table class="hours" data-hours>
+          <caption class="sr-only">Opening Hours</caption>
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Hours</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- data-day matches JavaScript's day numbering, 0 = Sunday, so the
+                 Sunday row carries 0 and sits last. -->
+            <tr data-day="1" class="is-closed">
+              <th scope="row">Monday</th>
+              <td>Closed</td>
+            </tr>
+            <tr data-day="2">
+              <th scope="row">Tuesday</th>
+              <td>8am &ndash; 5pm</td>
+            </tr>
+            <tr data-day="3">
+              <th scope="row">Wednesday</th>
+              <td>8am &ndash; 1pm</td>
+            </tr>
+            <tr data-day="4">
+              <th scope="row">Thursday</th>
+              <td>8am &ndash; 5pm</td>
+            </tr>
+            <tr data-day="5">
+              <th scope="row">Friday</th>
+              <td>8am &ndash; 5pm</td>
+            </tr>
+            <tr data-day="6">
+              <th scope="row">Saturday</th>
+              <td>8am &ndash; 2pm</td>
+            </tr>
+            <tr data-day="0">
+              <th scope="row">Sunday</th>
+              <td>9am &ndash; 1pm</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 6. WHERE TO FIND US -->
+    <section class="section reveal" id="find-us" aria-labelledby="find-us-heading">
+      <h2 id="find-us-heading">Where to Find Us</h2>
+      <p class="section-note">On The Parade in the heart of Smallfield, a few minutes from Horley.</p>
+
+      <div class="find-grid">
+        <div class="panel">
+          <h3>Address</h3>
+          <address>
+            1 The Parade, Redehall Rd,<br>
+            Smallfield, Surrey RH6 9PY
+          </address>
+
+          <h3>Telephone</h3>
+          <p><a href="tel:+441342844666">01342 844666</a></p>
+
+          <h3>Email</h3>
+          <p><a href="mailto:harrisbutchers1@gmail.com">harrisbutchers1@gmail.com</a></p>
+
+          <h3>Follow us</h3>
+          <!-- TODO: replace href="#" with the shop's real Facebook page URL. -->
+          <p><a href="#">Find us on Facebook</a></p>
+
+          <p class="parking">Free on-site parking.</p>
+        </div>
+
+        <div class="map-wrap">
+          <iframe
+            title="Google map showing James A Harris &amp; Son Quality Butchers at 1 The Parade, Redehall Road, Smallfield"
+            src="https://www.google.com/maps?q=1%20The%20Parade%2C%20Redehall%20Rd%2C%20Smallfield%2C%20Surrey%20RH6%209PY&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-name">James A Harris &amp; Son Quality Butchers</p>
+    <p>1 The Parade, Redehall Rd, Smallfield, Surrey RH6 9PY</p>
+    <p>
+      <a href="tel:+441342844666">01342 844666</a> &middot;
+      <a href="mailto:harrisbutchers1@gmail.com">harrisbutchers1@gmail.com</a>
+    </p>
+    <p class="copyright">&copy; <span id="year">2026</span> James A Harris &amp; Son Quality Butchers. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
