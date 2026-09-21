@@ -240,6 +240,7 @@ a:hover { color: var(--accent-text); }
 
 .site-nav ul {
   display: flex;
+  align-items: center;
   gap: 28px;
   margin: 0;
   padding: 0;
@@ -263,6 +264,25 @@ a:hover { color: var(--accent-text); }
 .site-nav a:focus-visible {
   color: var(--accent-text);
   border-bottom-color: var(--accent);
+}
+
+.nav-facebook {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.nav-facebook img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.nav-facebook:hover,
+.nav-facebook:focus-visible {
+  border-bottom-color: transparent;
+  transform: scale(1.08);
 }
 
 .nav-toggle {
@@ -935,6 +955,8 @@ a:hover { color: var(--accent-text); }
     padding: 14px 0;
     border-bottom: 0;
   }
+
+  .nav-facebook { display: flex; }
 
   .brand-logo { width: 62px; }
 
