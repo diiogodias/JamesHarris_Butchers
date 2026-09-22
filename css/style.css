@@ -371,7 +371,7 @@ a:hover { color: var(--accent-text); }
 }
 
 .hero-logo {
-  width: clamp(220px, 34vw, 340px);
+  width: clamp(231px, 36vw, 357px);
   height: auto;
 }
 
@@ -1013,7 +1013,7 @@ a:hover { color: var(--accent-text); }
 
   .hero-inner { gap: 20px; }
 
-  .hero-logo { width: 200px; }
+  .hero-logo { width: 210px; }
 
   .hero-sub { font-size: 1.05rem; }
 }
