@@ -365,41 +365,14 @@ a:hover { color: var(--accent-text); }
 
 .hero-inner > * { margin: 0; }
 
-.hero-logo {
-  width: 170px;
-  height: auto;
-}
-
 .hero h1 {
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--heading);
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
-  text-wrap: balance;
+  margin: 0;
+  line-height: 0;
 }
 
-/* #C9A27A measures about 5.2:1 against the darkest part of the overlay. */
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  width: 100%;
-  color: #C9A27A;
-  font-size: 1rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
-}
-
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content: "";
-  flex: 0 1 48px;
-  min-width: 0;
-  height: 1px;
-  background: currentColor;
+.hero-logo {
+  width: clamp(220px, 34vw, 340px);
+  height: auto;
 }
 
 .hero-divider {
@@ -1040,17 +1013,7 @@ a:hover { color: var(--accent-text); }
 
   .hero-inner { gap: 20px; }
 
-  .hero-logo { width: 120px; }
-
-  /* 0.35em tracking plus two 48px rules overflows a 375px screen. */
-  .hero-eyebrow {
-    gap: 12px;
-    font-size: 0.8rem;
-    letter-spacing: 0.24em;
-  }
-
-  .hero-eyebrow::before,
-  .hero-eyebrow::after { flex-basis: 30px; }
+  .hero-logo { width: 200px; }
 
   .hero-sub { font-size: 1.05rem; }
 }
