@@ -184,8 +184,8 @@ a:hover { color: var(--accent-text); }
   font-family: var(--serif);
   font-size: 1.05rem;
   font-weight: 700;
+  line-height: 1.2;
   color: var(--heading);
-  white-space: nowrap;
 }
 
 .brand {
@@ -371,7 +371,7 @@ a:hover { color: var(--accent-text); }
 }
 
 .hero-logo {
-  width: clamp(231px, 36vw, 357px);
+  width: min(600px, 100%);
   height: auto;
 }
 
@@ -1012,8 +1012,6 @@ a:hover { color: var(--accent-text); }
   }
 
   .hero-inner { gap: 20px; }
-
-  .hero-logo { width: 210px; }
 
   .hero-sub { font-size: 1.05rem; }
 }
