@@ -188,6 +188,12 @@ a:hover { color: var(--accent-text); }
   color: var(--heading);
 }
 
+.brand-est {
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
 .brand {
   display: flex;
   align-items: center;
