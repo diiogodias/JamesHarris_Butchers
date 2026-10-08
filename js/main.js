@@ -225,6 +225,69 @@
     }
   }
 
+  function getCookie(name) {
+    var parts = document.cookie.split(';');
+    var i;
+    var part;
+
+    for (i = 0; i < parts.length; i++) {
+      part = parts[i].replace(/^\s+/, '');
+      if (part.indexOf(name + '=') === 0) {
+        return part.slice(name.length + 1);
+      }
+    }
+
+    return '';
+  }
+
+  function setCookie(name, value) {
+    var cookie = name + '=' + value + '; path=/; max-age=31536000; SameSite=Lax';
+
+    if (window.location.protocol === 'https:') {
+      cookie += '; Secure';
+    }
+
+    document.cookie = cookie;
+  }
+
+  function enableAnalytics() {
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', 'G-XXXXXXXXXX');
+    }
+  }
+
+  /* First-visit banner. Hidden once harris_cookie_consent is set. */
+  function initCookieBanner() {
+    if (getCookie('harris_cookie_consent')) {
+      return;
+    }
+
+    var banner = document.createElement('div');
+    banner.className = 'cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-live', 'polite');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML =
+      '<p>We use cookies to improve your experience and analyse site traffic. By continuing to use this site you accept our use of cookies.</p>' +
+      '<div class="cookie-banner-actions">' +
+        '<button type="button" class="button" data-cookie-accept>Accept</button>' +
+        '<button type="button" class="button button--ghost" data-cookie-decline>Decline</button>' +
+      '</div>';
+
+    document.body.appendChild(banner);
+
+    banner.querySelector('[data-cookie-accept]').addEventListener('click', function () {
+      setCookie('harris_cookie_consent', 'accepted');
+      enableAnalytics();
+      banner.parentNode.removeChild(banner);
+    });
+
+    banner.querySelector('[data-cookie-decline]').addEventListener('click', function () {
+      setCookie('harris_cookie_consent', 'declined');
+      banner.parentNode.removeChild(banner);
+    });
+  }
+
   /* Fade sections in as they scroll into view. */
   function revealOnScroll() {
     var targets = document.querySelectorAll('.reveal');
@@ -264,6 +327,7 @@
     scheduleChristmasOrdersBadge();
     markMissingPhotos();
     revealOnScroll();
+    initCookieBanner();
   }
 
   if (document.readyState === 'loading') {

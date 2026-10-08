@@ -414,6 +414,7 @@ a:hover { color: var(--accent-text); }
   display: inline-block;
   padding: 14px 26px;
   background: var(--accent);
+  border: 0;
   border-radius: 2px;
   color: var(--heading);
   font-family: var(--sans);
@@ -422,6 +423,7 @@ a:hover { color: var(--accent-text); }
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -430,6 +432,27 @@ a:hover { color: var(--accent-text); }
   background: #83593C;
   color: var(--heading);
   transform: translateY(-2px);
+}
+
+.button--ghost {
+  background: transparent;
+  border: 1px solid var(--accent-text);
+  color: var(--heading);
+}
+
+.button--ghost:hover,
+.button--ghost:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--heading);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 28px 0 0;
 }
 
 /* ---------- Sections ---------- */
@@ -908,12 +931,93 @@ a:hover { color: var(--accent-text); }
 .site-footer a { color: var(--text); }
 
 .copyright {
-  max-width: 620px;
+  max-width: 720px;
   margin: 22px auto 0 !important;
   padding-top: 18px;
   border-top: 1px solid #333;
   font-size: 0.78rem;
   color: var(--faint);
+}
+
+.copyright a { color: var(--faint); }
+
+.copyright a:hover { color: var(--accent-text); }
+
+/* ---------- Legal / 404 / contact ---------- */
+
+.legal {
+  max-width: 46rem;
+}
+
+.legal h1,
+.legal .section-note {
+  text-align: center;
+}
+
+.legal h2 {
+  font-size: 1.15rem;
+  margin-top: 1.8em;
+}
+
+.legal p { margin: 0 0 1em; }
+
+.page-404 {
+  min-height: calc(100vh - 220px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.error-code {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(4.5rem, 16vw, 8rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--accent-text);
+}
+
+/* ---------- Cookie banner ---------- */
+
+.cookie-banner {
+  position: fixed;
+  z-index: 80;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 22px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  color: var(--text);
+}
+
+.cookie-banner p {
+  flex: 1 1 280px;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.cookie-banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cookie-banner .button {
+  padding: 10px 20px;
 }
 
 /* ---------- Scroll reveal ----------
