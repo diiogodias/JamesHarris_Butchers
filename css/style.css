@@ -256,6 +256,7 @@ a:hover { color: var(--accent-text); }
 .site-nav a {
   display: inline-block;
   padding: 6px 0;
+  white-space: nowrap;
   border-bottom: 2px solid transparent;
   color: var(--heading);
   font-size: 0.75rem;
@@ -879,6 +880,82 @@ a:hover { color: var(--accent-text); }
 .back-link:hover,
 .back-link:focus-visible { border-bottom-color: var(--accent-text); }
 
+/* String of lights under the header. The strip is only the 4px wire, so it
+   barely moves the content; the bulbs hang over the section's top padding. */
+.christmas-lights {
+  position: sticky;
+  /* Overwritten by js/main.js with the real header height. */
+  top: var(--header-h);
+  z-index: 40;
+  display: flex;
+  justify-content: space-around;
+  height: 4px;
+  background: #1a1008;
+  pointer-events: none;
+}
+
+.bulb {
+  --bulb: #ff0000;
+  --bulb-off: #4d0000;
+  position: relative;
+  width: 12px;
+  height: 18px;
+  margin-top: 12px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  background: var(--bulb);
+  box-shadow: 0 0 8px 3px var(--bulb);
+  animation: twinkle 2s linear infinite;
+}
+
+/* Cap. */
+.bulb::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 2px;
+  width: 8px;
+  height: 5px;
+  border-radius: 2px 2px 0 0;
+  background: #444;
+}
+
+/* Drop wire up to the main string. */
+.bulb::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 5px;
+  width: 2px;
+  height: 8px;
+  background: #1a1008;
+}
+
+/* Five colours repeating, so neighbours never match. */
+.bulb:nth-child(5n + 2) { --bulb: #00aa00; --bulb-off: #003300; }
+.bulb:nth-child(5n + 3) { --bulb: #ffcc00; --bulb-off: #4d3d00; }
+.bulb:nth-child(5n + 4) { --bulb: #ffffff; --bulb-off: #4a4a4a; }
+.bulb:nth-child(5n + 5) { --bulb: #0066ff; --bulb-off: #001f4d; }
+
+/* About 1.5s lit, 0.5s dark per cycle; js/main.js varies each bulb's timing. */
+@keyframes twinkle {
+  0%, 72% {
+    background: var(--bulb);
+    box-shadow: 0 0 8px 3px var(--bulb);
+  }
+  75%, 97% {
+    background: var(--bulb-off);
+    box-shadow: none;
+  }
+  100% {
+    background: var(--bulb);
+    box-shadow: 0 0 8px 3px var(--bulb);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .bulb:nth-child(n + 13) { display: none; }
+}
+
 .menu-block {
   display: grid;
   grid-template-columns: 1fr;
@@ -906,6 +983,367 @@ a:hover { color: var(--accent-text); }
   text-transform: uppercase;
   text-align: center;
   color: var(--faint);
+}
+
+/* ---------- Christmas 2026 page (christmas.html) ---------- */
+
+/* .section.* so these beat the tablet/desktop .section padding further down. */
+.section.xmas-hero {
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.xmas-title,
+.xmas-heading {
+  font-family: var(--serif);
+  font-weight: 700;
+}
+
+.xmas-title {
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  line-height: 1.1;
+  color: var(--heading);
+  text-shadow: 0 2px 18px rgba(201, 162, 122, 0.25);
+}
+
+.xmas-divider {
+  display: block;
+  width: min(220px, 60%);
+  height: 1px;
+  margin: 22px auto 0;
+  background: linear-gradient(to right, transparent, #C9A27A, transparent);
+}
+
+/* The previous section's bottom padding already provides the gap. */
+.section.xmas-section { padding-top: 0; }
+
+.section > h2.xmas-heading,
+.xmas-heading {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: 0.6em;
+}
+
+.xmas-copy .xmas-heading { text-align: left; }
+
+.xmas-copy p { margin: 0 0 1em; }
+
+.xmas-split,
+.xmas-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Photo slot. The <img> covers the label once the file exists; until then
+   js/main.js flags .is-missing and the dashed placeholder shows. */
+.xmas-photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.xmas-photo > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.xmas-photo > span {
+  padding: 0 16px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: #C9A27A;
+}
+
+.xmas-photo.is-missing {
+  border: 2px dashed #C9A27A;
+  background: #141210;
+}
+
+.xmas-photo.is-missing > img { display: none; }
+
+/* Takes the photo's own shape instead of cropping it to 4:3. */
+.xmas-photo--fit:not(.is-missing) {
+  display: block;
+  aspect-ratio: auto;
+}
+
+.xmas-photo--fit:not(.is-missing) > img {
+  position: static;
+  height: auto;
+}
+
+.xmas-photo--fit:not(.is-missing) > span { display: none; }
+
+.price-table-wrap {
+  max-width: 360px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+}
+
+.price-table caption {
+  padding: 12px 16px;
+  background: var(--panel-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--accent-text);
+}
+
+.price-table th,
+.price-table td {
+  padding: 9px 16px;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.price-table td { text-align: right; color: var(--heading); }
+
+.price-table thead th {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.price-table thead th:last-child { text-align: right; }
+
+.price-table tbody th { font-weight: 600; color: var(--heading); }
+
+.price-table tbody tr:nth-child(even) { background: var(--panel-soft); }
+
+.xmas-items {
+  display: grid;
+  gap: 32px;
+}
+
+.xmas-item {
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.xmas-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.xmas-item h3 {
+  margin: 0 0 0.4em;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.xmas-item p { margin: 0; }
+
+.xmas-item--text { gap: 0; }
+
+.xmas-item--text p { max-width: 62ch; }
+
+.xmas-collection {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 32px 28px;
+  text-align: center;
+  background: var(--panel);
+  border: 2px solid #C9A27A;
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 6px rgba(201, 162, 122, 0.08), 0 14px 36px rgba(0, 0, 0, 0.4);
+}
+
+.xmas-collection .xmas-heading { margin-bottom: 0.3em; }
+
+.xmas-collection p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--heading);
+}
+
+.xmas-collection strong { color: #E2C29B; }
+
+.hamper-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.hamper {
+  --tier: #B07A4F;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--tier);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.hamper--silver { --tier: #C0C0C0; }
+
+.hamper--gold { --tier: #D4AF37; }
+
+.hamper--popular {
+  border-color: #C9A27A;
+  border-top-color: var(--tier);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.hamper-ribbon {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: #A33A3A;
+  color: var(--heading);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hamper h3 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+  color: var(--heading);
+}
+
+.hamper-feeds {
+  align-self: center;
+  margin: 0 0 14px;
+  padding: 4px 12px;
+  border: 1px solid var(--tier);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--heading);
+}
+
+.hamper-price {
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #E2C29B;
+}
+
+.hamper ul {
+  margin: 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+  text-align: left;
+}
+
+.hamper li {
+  position: relative;
+  padding: 5px 0 5px 18px;
+  font-size: 0.92rem;
+}
+
+.hamper li::before {
+  content: "";
+  position: absolute;
+  top: 0.95em;
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tier);
+}
+
+.hamper-cta {
+  margin: 36px 0 0;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--heading);
+}
+
+.hamper-cta a {
+  color: #E2C29B;
+  font-weight: 700;
+}
+
+.xmas-band {
+  background: linear-gradient(180deg, #7A1C1C 0%, #5E1414 100%);
+  border-top: 3px solid #C9A27A;
+  text-align: center;
+}
+
+.xmas-band-inner {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 56px var(--gutter);
+}
+
+.xmas-band h2 {
+  margin: 0 0 0.4em;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  color: var(--heading);
+}
+
+.xmas-band p {
+  margin: 0 0 26px;
+  color: #F0DCD2;
+}
+
+.xmas-band-button {
+  background: var(--heading);
+  color: #5E1414;
+}
+
+.xmas-band-button:hover,
+.xmas-band-button:focus-visible {
+  background: #FFFFFF;
+  color: #5E1414;
+}
+
+@media (min-width: 768px) {
+  .xmas-split { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+
+  .xmas-item { grid-template-columns: 1.4fr 1fr; gap: 40px; }
+
+  .xmas-item--text { grid-template-columns: 1fr; gap: 0; }
+
+  .hamper-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .hamper--gold {
+    transform: translateY(-14px);
+    border-color: #D4AF37;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
+  }
+
+  .xmas-band-inner { padding: 72px var(--gutter); }
 }
 
 /* ---------- Footer ---------- */
@@ -1149,6 +1587,13 @@ a:hover { color: var(--accent-text); }
   }
 
   .menu-block { grid-template-columns: 1fr 1.5fr; }
+}
+
+/* Five nav items only just fit beside the brand at small tablet widths. */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .site-nav ul { gap: 16px; }
+
+  .site-nav a { letter-spacing: 0.1em; }
 }
 
 /* ---------- Desktop ---------- */

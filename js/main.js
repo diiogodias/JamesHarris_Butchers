@@ -120,91 +120,10 @@
     }
   }
 
-  /* London clock parts, so the Christmas badge flips at midnight UK time
-     rather than in the visitor's own timezone. */
-  function londonParts(date) {
-    var parts = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/London',
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      hourCycle: 'h23'
-    }).formatToParts(date);
-    var map = {};
-    var i;
-
-    for (i = 0; i < parts.length; i++) {
-      if (parts[i].type !== 'literal') {
-        map[parts[i].type] = parseInt(parts[i].value, 10);
-      }
-    }
-
-    return map;
-  }
-
-  /* Christmas orders open at 00:00 on 1 November 2026, Europe/London. */
-  function christmasOrdersAreOpen(now) {
-    var p = londonParts(now || new Date());
-
-    if (p.year > 2026) {
-      return true;
-    }
-
-    if (p.year < 2026) {
-      return false;
-    }
-
-    if (p.month > 11) {
-      return true;
-    }
-
-    if (p.month < 11) {
-      return false;
-    }
-
-    return p.day >= 1;
-  }
-
-  function setChristmasOrdersBadge() {
-    var tags = document.querySelectorAll('[data-orders-open]');
-    var open = christmasOrdersAreOpen();
-    var i;
-
-    for (i = 0; i < tags.length; i++) {
-      tags[i].textContent = open ? 'Orders Open' : 'Orders Closed';
-      tags[i].classList.toggle('is-open', open);
-      tags[i].classList.toggle('is-closed', !open);
-    }
-  }
-
-  /* If the page is left open overnight on 31 October, flip the badge at midnight. */
-  function scheduleChristmasOrdersBadge() {
-    setChristmasOrdersBadge();
-
-    if (christmasOrdersAreOpen()) {
-      return;
-    }
-
-    var now = new Date();
-    var parts = londonParts(now);
-    var wait;
-
-    if (parts.year === 2026 && parts.month === 10 && parts.day === 31) {
-      wait = ((23 - parts.hour) * 3600 + (59 - parts.minute) * 60 + (60 - parts.second)) * 1000;
-    } else {
-      wait = 60 * 60 * 1000;
-    }
-
-    window.setTimeout(scheduleChristmasOrdersBadge, Math.max(1000, wait));
-  }
-
   /* Until a file exists the browser would draw a broken-image icon, so hide
-     the image and let the neutral placeholder panel show through instead. */
+     the image and let the placeholder panel show through instead. */
   function markMissingPhotos() {
-    var images = document.querySelectorAll('.product-card > img');
+    var images = document.querySelectorAll('.product-card > img, .xmas-photo > img');
     var i;
 
     function flag() {
@@ -288,6 +207,34 @@
     });
   }
 
+  /* Christmas page lights: pin the string under the header and give every
+     bulb its own timing so they twinkle out of step. */
+  function initChristmasLights() {
+    var lights = document.querySelector('.christmas-lights');
+    var header = document.querySelector('.site-header');
+
+    if (!lights) {
+      return;
+    }
+
+    function pin() {
+      if (header) {
+        lights.style.top = header.offsetHeight + 'px';
+      }
+    }
+
+    pin();
+    window.addEventListener('resize', pin);
+
+    var bulbs = lights.querySelectorAll('.bulb');
+    var i;
+
+    for (i = 0; i < bulbs.length; i++) {
+      bulbs[i].style.animationDuration = (1.6 + Math.random() * 0.8).toFixed(2) + 's';
+      bulbs[i].style.animationDelay = (-Math.random() * 2).toFixed(2) + 's';
+    }
+  }
+
   /* Fade sections in as they scroll into view. */
   function revealOnScroll() {
     var targets = document.querySelectorAll('.reveal');
@@ -324,9 +271,9 @@
     initNav();
     setYear();
     highlightToday();
-    scheduleChristmasOrdersBadge();
     markMissingPhotos();
     revealOnScroll();
+    initChristmasLights();
     initCookieBanner();
   }
 
