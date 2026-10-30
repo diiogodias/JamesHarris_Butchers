@@ -1024,8 +1024,6 @@ a:hover { color: var(--accent-text); }
   margin-bottom: 0.6em;
 }
 
-.xmas-copy .xmas-heading { text-align: left; }
-
 .xmas-copy p { margin: 0 0 1em; }
 
 .xmas-split,
@@ -1072,67 +1070,68 @@ a:hover { color: var(--accent-text); }
 
 .xmas-photo.is-missing > img { display: none; }
 
-/* Takes the photo's own shape instead of cropping it to 4:3. */
-.xmas-photo--fit:not(.is-missing) {
-  display: block;
-  aspect-ratio: auto;
+/* Portrait crop on mobile; on wider screens the price box sets the row
+   height (see the 768px block) and the photo covers it. */
+.xmas-photo--cover { aspect-ratio: 4 / 5; }
+
+.xmas-copy--turkey { margin-bottom: 32px; }
+
+.xmas-copy--turkey p {
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
-.xmas-photo--fit:not(.is-missing) > img {
-  position: static;
-  height: auto;
-}
+.xmas-copy--turkey p:last-child { margin-bottom: 0; }
 
-.xmas-photo--fit:not(.is-missing) > span { display: none; }
-
-.price-table-wrap {
-  max-width: 360px;
+.price-box {
+  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
 }
 
-.price-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--panel);
-}
-
-.price-table caption {
+.price-box-title {
+  margin: 0;
   padding: 12px 16px;
   background: var(--panel-soft);
   border-bottom: 1px solid var(--line);
+  font-family: var(--sans);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  text-align: left;
   color: var(--accent-text);
 }
 
-.price-table th,
-.price-table td {
-  padding: 9px 16px;
-  font-size: 0.9rem;
-  text-align: left;
+.price-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.price-table td { text-align: right; color: var(--heading); }
-
-.price-table thead th {
-  font-size: 0.7rem;
+.price-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  font-family: var(--sans);
+  font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--line);
+  color: var(--heading);
 }
 
-.price-table thead th:last-child { text-align: right; }
+.price-list li + li { border-top: 1px solid var(--line); }
 
-.price-table tbody th { font-weight: 600; color: var(--heading); }
+.price-list li:nth-child(even) { background: var(--panel-soft); }
 
-.price-table tbody tr:nth-child(even) { background: var(--panel-soft); }
+.price-box-note {
+  margin: 0;
+  padding: 10px 14px 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--muted);
+}
 
 .xmas-items {
   display: grid;
@@ -1157,9 +1156,7 @@ a:hover { color: var(--accent-text); }
 
 .xmas-item p { margin: 0; }
 
-.xmas-item--text { gap: 0; }
-
-.xmas-item--text p { max-width: 62ch; }
+.xmas-product + .xmas-product { margin-top: 28px; }
 
 .xmas-collection {
   max-width: 46rem;
@@ -1329,11 +1326,21 @@ a:hover { color: var(--accent-text); }
 }
 
 @media (min-width: 768px) {
-  .xmas-split { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .xmas-split { grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
 
-  .xmas-item { grid-template-columns: 1.4fr 1fr; gap: 40px; }
+  .xmas-photo--cover { aspect-ratio: auto; min-height: 320px; }
 
-  .xmas-item--text { grid-template-columns: 1fr; gap: 0; }
+  .xmas-copy--turkey { margin-bottom: 40px; }
+
+  .price-list li { font-size: 1.15rem; }
+
+  .price-box-note { padding: 12px 20px 14px; font-size: 0.85rem; }
+
+  .xmas-item { grid-template-columns: 1fr 1.4fr; gap: 40px; }
+
+  .xmas-item--photo-right { grid-template-columns: 1.4fr 1fr; }
+
+  .xmas-item--photo-right .xmas-photo { order: 2; }
 
   .hamper-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
